@@ -11,7 +11,7 @@ const sendSignUpEmail =  async(toEmail,subject,message)=>{
                 sender: { email: 'zameeralucknowi@gmail.com', name: 'Dream Mart' },
                 to: [{ email: toEmail }],
                 subject: subject,
-                htmlContent: `<html><body><h3>${message}</h3></body></html>`, // Use HTML content for better formatting
+                htmlContent: `<html><body><p>${message}</p></body></html>`, // Use HTML content for better formatting
             },
             {
                 headers: {

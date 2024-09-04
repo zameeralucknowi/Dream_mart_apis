@@ -24,10 +24,12 @@ app.use('/api/orders',orderRoute)
 app.use('/api/carts',cartRoute)
 app.use('/api/checkout',paypalRoute)
 
-app.use(express.static(path.join(__dirname,'client/build')));
-app.get('*',(req,res)=>{
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-})
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Handle all other routes by serving index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>{

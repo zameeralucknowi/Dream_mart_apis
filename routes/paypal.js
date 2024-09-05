@@ -77,7 +77,7 @@ router.get('/success', async (req, res) => {
         paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
             if (error) {
                 console.log(error)
-                 res.redirect(`${process.env.CLIENT}/failed`); // client side
+               return  res.redirect('https://dreammart-webapp.onrender.com/failed'); // client side
             } else {
                 console.log("Execute Payment Response");
                 const response = JSON.stringify(payment);
@@ -85,7 +85,7 @@ router.get('/success', async (req, res) => {
                 const transactions = parsedResponse.transactions[0];
                 console.log("transactions", transactions);
                 transactionsData[paymentId]=transactions;
-                 res.redirect(`${process.env.CLIENT}/success?paymentId=${paymentId}`); // client side 
+               return  res.redirect(`https://dreammart-webapp.onrender.com/success?paymentId=${paymentId}`); // client side 
             }
         })
     } catch (error) {
@@ -95,7 +95,7 @@ router.get('/success', async (req, res) => {
 })
 
 router.get('/failed',(req,res)=>{
-    return res.redirect(`${process.env.CLIENT}/failed`); 
+    return res.redirect('https://dreammart-webapp.onrender.com/failed'); 
 })
 
 router.get('/transactions',(req,res)=>{
